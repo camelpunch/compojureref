@@ -3,13 +3,13 @@
         ring.mock.request
         compojureref.handler))
 
-(defn index-response [] (app (request :get "/")))
+(defn GET [path] (app (request :get path)))
 
-(expect 200 (:status (index-response)))
-(expect #"Fun with Clojure" (:body (index-response)))
+(expect 200                 (:status  (GET "/")))
+(expect #"Fun with Clojure" (:body    (GET "/")))
 
-(defn not-found-response [] (app (request :get "/invalid/bananas")))
+(expect 200                 (:status  (GET "/someword")))
+(expect #"&lt;someword&gt;" (:body    (GET "/%3Csomeword%3E")))
 
-(expect 404 (:status (not-found-response)))
-
+(expect 404                 (:status  (GET "/invalid/path")))
 
