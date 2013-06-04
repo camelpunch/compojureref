@@ -18,4 +18,5 @@
   {:dev {:dependencies [
                         [ring-mock "0.1.3"]
                         [expectations "1.4.38"]
+                        [org.clojure/tools.nrepl "0.2.3"]
                         ]}})
